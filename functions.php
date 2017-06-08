@@ -7,11 +7,11 @@
  */
 use Sau\Lib\Custom;
 use Sau\Lib\HF;
-use Sau\Lib\Notice;
 use Sau\Lib\Theme;
 
 include 'vendor/autoload.php';
-include_once( ABSPATH . 'wp-admin/includes/plugin.php' ); //для использования некоторых специфических функций типа is_plugin_active()
+include( ABSPATH . 'wp-admin/includes/plugin.php' ); //для использования некоторых специфических функций типа is_plugin_active()
+include( 'tgm/tgm.php' );
 
 if ( ! defined( 'DS' ) ) {
 	define( 'DS', DIRECTORY_SEPARATOR );
@@ -39,9 +39,6 @@ Theme::addLib(
 //Поддержка плагина CarbonFields
 /*********Carbon*********/
 if ( ! is_plugin_active( 'carbon-fields/carbon-fields-plugin.php' ) ) {
-	Notice::warning(
-		'The <a href="https://wordpress.org/plugins/carbon-fields/">Carbon Fields</a> plugin is not active'
-	);
 	Theme::addLib(
 		[
 			'lib/carbon/no_carbon.php'      //заглушка если плагина нет. Сайт не развалится но не будет функционала
