@@ -27,6 +27,9 @@ HF::addScript( 'tutmee-script', get_stylesheet_directory_uri() . '/js/bundle.js'
 //Подключение языковых файлов
 Theme::loadThemeTextdomain( THEME_LANG, get_stylesheet_directory() . DS . 'l10n' );
 
+//Включение поддержки заголовков
+Theme::addSupportTitleTag();
+
 Theme::addFavicon( get_stylesheet_directory_uri() . '/favicon.ico' );
 
 //Подключение библиотек
