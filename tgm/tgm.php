@@ -64,12 +64,6 @@ function sau_tgm_register_required_plugins()
 {
     $plugins = array(
         array(
-            'name'             => 'Carbon Fields',
-            'slug'             => 'carbon-fields',
-            'required'         => true,
-            'force_activation' => true,
-        ),
-        array(
             'name'             => 'The SEO Framework',
             'slug'             => 'autodescription',
             'required'         => true,
@@ -84,8 +78,6 @@ function sau_tgm_register_required_plugins()
         array(
             'name'             => 'WP Minify Fix',
             'slug'             => 'wp-minify-fix',
-            'required'         => true,
-            'force_activation' => true,
         ),
         array(
             'name'             => 'Sender',
