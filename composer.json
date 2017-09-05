@@ -1,5 +1,28 @@
 {
-    "require": {
-        "sau/library": "dev-master"
-    }
+	"name": "sau/wp_template",
+	"description": "Базовая тема Wordpress",
+	"keywords": [
+		"wp",
+		"template",
+		"sau"
+	],
+	"minimum-stability": "dev",
+	"license": "MIT",
+	"version": "v0.4",
+	"authors": [
+		{
+			"name": "Akinay Sau",
+			"email": "akinaysau@gmail.com",
+			"homepage": "http://a-sau.ru",
+			"role": "Developer"
+		}
+	]
+	"require": {
+		"php": ">=7.0"
+	},
+	"autoload": {
+		"psr-4": {
+			"Sau\\WP\\Theme\\": "lib/class/"
+		}
+	}
 }
