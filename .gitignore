@@ -1,5 +1,5 @@
 # Created by .ignore support plugin (hsz.mobi)
 
-#vendor/
+vendor/
 composer.lock
 composer.phar

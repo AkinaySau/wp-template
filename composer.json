@@ -16,9 +16,11 @@
 			"homepage": "http://a-sau.ru",
 			"role": "Developer"
 		}
-	]
+	],
 	"require": {
-		"php": ">=7.0"
+		"php": ">=7.0",
+		"sau/library": "dev-master",
+		"pug-php/pug": "3.0.x-dev"
 	},
 	"autoload": {
 		"psr-4": {
