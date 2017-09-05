@@ -36,6 +36,10 @@ Theme::addFavicon( get_stylesheet_directory_uri() . '/favicon.ico' );
 
 //Подключение файлов темы
 Theme::addLib( [
+	//Файл раширения function.php (для мелкой логики)
+	'lib/extend_function.php',
+
+	//Фильтры
 	'lib/filters.php',
 ] );
 
