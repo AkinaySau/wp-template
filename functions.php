@@ -5,9 +5,11 @@
  * Date: 12.05.2017
  * Time: 10:40
  */
+
 use Sau\Lib\Custom;
 use Sau\Lib\HF;
 use Sau\Lib\Theme;
+use Sau\WP\Theme\Carbon;
 
 include 'vendor/autoload.php';
 include( ABSPATH . 'wp-admin/includes/plugin.php' ); //для использования некоторых специфических функций типа is_plugin_active()
@@ -32,41 +34,17 @@ Theme::addSupportTitleTag();
 
 Theme::addFavicon( get_stylesheet_directory_uri() . '/favicon.ico' );
 
-//Подключение библиотек
-Theme::addLib(
-	[
-		'lib/filters.php'
-	]
-);
+//Подключение файлов темы
+Theme::addLib( [
+	'lib/filters.php',
+] );
 
-//Поддержка плагина CarbonFields
+//Поддержка плагина CarbonFields 2.*
 /*********Carbon*********/
-if ( ! is_plugin_active( 'carbon-fields/carbon-fields-plugin.php' ) ) {
-	Theme::addLib(
-		[
-			'lib/carbon/no_carbon.php'      //заглушка если плагина нет. Сайт не развалится но не будет функционала
-		]
-	);
-}
-
-add_action(
-	'carbon_register_fields', function () {
-	//Подключение полей
-	Theme::addLib(
-		[
-
-		]
-	);
-}
-);
+Carbon::init();
+Carbon::registerFields( 'lib/carbon/test_field.php' );
 /************************/
 
 //Плюшки
-Custom::loginLogo(
-	get_stylesheet_directory_uri() . '/images/tutmee/logo.png',
-	187,
-	70,
-	'http://tutmee.ru',
-	'Tutumee Agency'
-);
+Custom::loginLogo( get_stylesheet_directory_uri() . '/images/tutmee/logo.png', 187, 70, 'http://tutmee.ru', 'Tutumee Agency' );
 
