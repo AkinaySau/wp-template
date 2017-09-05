@@ -42,7 +42,8 @@ Theme::addLib( [
 //Поддержка плагина CarbonFields 2.*
 /*********Carbon*********/
 Carbon::init();
-Carbon::registerFields( 'lib/carbon/test_field.php' );
+//для добавления файла с полями
+//Carbon::registerFields();
 /************************/
 
 //Плюшки
