@@ -10,7 +10,6 @@ use Sau\Lib\Custom;
 use Sau\Lib\HF;
 use Sau\Lib\Theme;
 use Sau\WP\Theme\Carbon;
-use Sau\WP\Theme\SPug;
 
 include 'vendor/autoload.php';
 include( ABSPATH . 'wp-admin/includes/plugin.php' ); //для использования некоторых специфических функций типа is_plugin_active()
@@ -49,8 +48,6 @@ Theme::addLib( [
 Carbon::init();
 //для добавления файла с полями
 //Carbon::registerFields();
-/*********Pug************/
-SPug::init();
 
 
 //Плюшки
