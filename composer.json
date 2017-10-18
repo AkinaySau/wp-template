@@ -6,6 +6,7 @@
 		"template",
 		"sau"
 	],
+	"homepage": "https://github.com/AkinaySau/wp-template",
 	"minimum-stability": "dev",
 	"license": "MIT",
 	"version": "1.0.1",
