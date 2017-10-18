@@ -20,6 +20,7 @@
 	"require": {
 		"php": ">=7.0",
 		"sau/library": "dev-master",
+		"twig/twig": "2.*",
 		"htmlburger/carbon-fields": "2.0.4"
 	},
 	"autoload": {

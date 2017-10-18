@@ -1,0 +1,18 @@
+{% spaceless %}
+	<!DOCTYPE html>
+	<html {{ ln_attributes() }}>
+	<head>
+		{% block head %}{% endblock %}
+		{{ wp_head() }}
+	</head>
+	<body>
+	{% block body_before %}{% endblock %}
+	<div class="content">
+		{% block content %}{% endblock %}
+	</div>
+	{% block body_after %}
+		{{ wp_footer() }}
+	{% endblock %}
+	</body>
+	</html>
+{% endspaceless %}
