@@ -25,6 +25,12 @@ use Twig_Loader_Filesystem;
  */
 class SauTwig {
 	/**
+	 * Filters
+	 *
+	 * @var array
+	 */
+	private static $filters;
+	/**
 	 * @var Twig_Environment
 	 */
 	private static $twig;
@@ -73,8 +79,8 @@ class SauTwig {
 	 * @return string
 	 */
 	public static function render( $template, $var = [] ) {
-		if ( $template = self::getTemplate( $template ) )
-		{
+		self::applyVarFilter( $var );
+		if ( $template = self::getTemplate( $template ) ) {
 			$template = self::$twig->load( $template );
 
 			return $template->render( $var );
@@ -82,6 +88,24 @@ class SauTwig {
 
 		return '';
 	}
+
+	/**
+	 * Apply filters for $var
+	 *
+	 * @param $var
+	 *
+	 */
+	private static function applyVarFilter( &$var ) {
+		if ( self::$filters ) {
+			sort( self::$filters );
+			foreach ( self::$filters as $priority ) {
+				foreach ( $priority as $callable ) {
+					$callable( $var );
+				}
+			}
+		}
+	}
+
 
 	/**
 	 * @param string|array|stdClass $template Name twig-template or array names
@@ -92,10 +116,8 @@ class SauTwig {
 		$dir      = scandir( get_stylesheet_directory() . DS . self::$filesystem );
 		$template = (array) $template;
 
-		foreach ( $template as $item )
-		{
-			if ( array_search( $item, $dir ) && substr( $item, - 4 ) == 'twig' )
-			{
+		foreach ( $template as $item ) {
+			if ( array_search( $item, $dir ) && substr( $item, - 4 ) == 'twig' ) {
 				return $item;
 			}
 		}
@@ -110,8 +132,8 @@ class SauTwig {
 	 * @param array                 $var      Vars for template
 	 */
 	public static function display( $template, $var = [] ) {
-		if ( $template = self::getTemplate( $template ) )
-		{
+		self::applyVarFilter( $var );
+		if ( $template = self::getTemplate( $template ) ) {
 			$template = self::$twig->load( $template );
 			$template->display( $var );
 		}
@@ -125,11 +147,14 @@ class SauTwig {
 	 * @return \Twig_TemplateWrapper
 	 */
 	public static function load( $template ) {
-		if ( $template = self::getTemplate( $template ) )
-		{
+		if ( $template = self::getTemplate( $template ) ) {
 			return $template = self::$twig->load( $template );
 		}
 
 		return null;
+	}
+
+	public static function addVarFilter( callable $callback, $priority = 0 ) {
+		self::$filters[ $priority ][] = $callback;
 	}
 }
