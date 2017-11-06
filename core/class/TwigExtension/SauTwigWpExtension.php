@@ -9,12 +9,10 @@
 namespace Sau\WP\Theme\TwigExtension;
 
 
-use function get_stylesheet_directory_uri;
-use function get_the_post_thumbnail_url;
-use function the_excerpt;
+use function is_user_logged_in;
 use Twig_Extension;
 use Twig_SimpleFunction;
-use function wp_get_attachment_image_src;
+use function wp_nav_menu;
 
 class SauTwigWpExtension extends Twig_Extension {
 
@@ -45,6 +43,12 @@ class SauTwigWpExtension extends Twig_Extension {
 			 * Theme
 			 */
 			new Twig_SimpleFunction( 'theme_uri', 'get_stylesheet_directory_uri' ),
+			new Twig_SimpleFunction( 'do_shortcode', 'do_shortcode' ),
+
+			/**
+			 * Users
+			 */
+			new Twig_SimpleFunction( 'is_user_logged_in', 'is_user_logged_in' ),
 
 			/**
 			 * Footer
@@ -68,6 +72,11 @@ class SauTwigWpExtension extends Twig_Extension {
 			 */
 
 			new Twig_SimpleFunction( 'ln_attributes', 'language_attributes' ),
+
+			/**
+			 * Nonce
+			 */
+			new Twig_SimpleFunction( 'wp_nonce_field', 'wp_nonce_field' ),
 		];
 	}
 }
