@@ -1,4 +1,5 @@
 <?php
+load_tgm_plugin_activation();
 add_action( 'tgmpa_register', function () {
 	$plugins = array(
 		array(
