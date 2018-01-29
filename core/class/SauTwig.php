@@ -144,7 +144,7 @@ class SauTwig {
 	 *
 	 * @param string|array|stdClass $template Name twig-template or array names
 	 *
-	 * @return \Twig_TemplateWrapper
+	 * @return \Twig_TemplateWrapper|null
 	 */
 	public static function load( $template ) {
 		if ( $template = self::getTemplate( $template ) ) {
