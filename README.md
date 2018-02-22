@@ -1,6 +1,6 @@
 # Базовый каркас темы WP
 
-## Установк
+## Установка
 ```
 composer create-project sau/wp_template {PROJECT_NAME}
 ```
@@ -22,7 +22,7 @@ composer create-project sau/wp_template {PROJECT_NAME}
 - **scss** - scss файлы
 - **views** - Шаблоны
 
-## Дирректория lib 
+## Дирректория lib/
 * **extend_function.php** - дополнение function.php
 * **carbon/** - описание полей ccf
 * **class/** - классы (namespace Sau\WP\Theme\)
