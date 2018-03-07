@@ -5,8 +5,9 @@
  * Time: 10:30
  */
 
-use Sau\WP\Theme\SauTwig;
+
+use Sau\WP\Theme\Twig\SauTwig;
 
 $data = [];
 
-SauTwig::display( 'index.html.twig', $data );
+SauTwig::display('@template/index.twig', $data);

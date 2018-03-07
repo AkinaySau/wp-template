@@ -11,9 +11,8 @@ use Sau\WP\Theme\Carbon\CarbonExtendTemplate;
 use Sau\WP\Theme\Ru\RuExtendTemplate;
 use Sau\WP\Theme\Source\ST;
 use Sau\WP\Theme\STheme;
-use Sau\WP\Theme\TGM;
 use Sau\WP\Theme\Twig\SauTwig;
-use Sau\WP\Theme\Whoops\SauWhoops;
+use Sau\WP\Theme\Whoops\WhoopsExtendTemplate;
 use Sau\WP\Theme\WP\WP;
 
 include 'vendor/autoload.php';
@@ -22,7 +21,7 @@ include( ABSPATH . 'wp-admin/includes/plugin.php' ); //для использов
 // Initial theme
 BaseAction::action('after_setup_theme', function () {
 	( new STheme() )->requirements([
-		new SauWhoops(),
+		new WhoopsExtendTemplate(),
 		new WP(),
 		new CarbonExtendTemplate(),
 		new RuExtendTemplate(),
@@ -31,9 +30,5 @@ BaseAction::action('after_setup_theme', function () {
 }, 1);
 
 //require plugins
-TGM::init();
-ST::initial();
-
-
-
-
+global $st;
+$st = new ST();

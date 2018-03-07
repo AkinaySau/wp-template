@@ -9,9 +9,16 @@
 namespace Sau\WP\Theme;
 
 
+use Sau\WP\Theme\Traits\Menu;
+
 abstract class InitTemplateClass {
-	final protected function __construct () {
+	use Menu;
+
+	public function __construct () {
+		TGM::init();
+		$this->customCode();
 	}
 
-	abstract public static function initial();
+
+	abstract protected function customCode ();
 }

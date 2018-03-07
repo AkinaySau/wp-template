@@ -9,14 +9,12 @@
 namespace Sau\WP\Theme\Source;
 
 
+use Sau\Lib\HF;
 use Sau\Lib\Theme;
 use Sau\WP\Theme\InitTemplateClass;
 
-abstract class ST extends InitTemplateClass {
-	/**
-	 * For your code
-	 */
-	public static function initial () {
+class ST extends InitTemplateClass {
+	protected static function customCode () {
 		Theme::addSupportTitleTag();
 		Theme::loadThemeTextdomain(THEME_LANG, get_stylesheet_directory() . DS . 'l10n');
 

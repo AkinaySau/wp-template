@@ -25,7 +25,8 @@
     "symfony/yaml": "^3",
     "twig/twig": "^2.4.4",
     "tgmpa/tgm-plugin-activation": "~2.6.1",
-    "sau/wp_template_carbon": "1.0.*"
+    "sau/wp_template_carbon": "^1",
+    "sau/wp_template_whoops": "^1"
   },
   "autoload": {
     "psr-4": {

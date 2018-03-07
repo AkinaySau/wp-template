@@ -10,6 +10,11 @@ namespace Sau\WP\Theme;
 
 use Symfony\Component\EventDispatcher\EventDispatcher;
 
+/**
+ * Class STheme
+ * @package Sau\WP\Theme
+ * @TODO: automatic create folder for cache
+ */
 class STheme {
 
 	protected static $dispatcher;
