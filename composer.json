@@ -1,32 +1,36 @@
 {
-	"name": "sau/wp_template",
-	"description": "Base template for Wordpress",
-	"keywords": [
-		"wp",
-		"template",
-		"sau"
-	],
-	"homepage": "https://github.com/AkinaySau/wp-template",
-	"license": "MIT",
-	"version": "1.0.2",
-	"authors": [
-		{
-			"name": "Akinay Sau",
-			"email": "akinay.sau@gmail.com",
-			"homepage": "http://a-sau.ru",
-			"role": "Developer"
-		}
-	],
-	"require": {
-		"php": ">=7.0",
-		"sau/library": "dev-master",
-		"twig/twig": "2.*",
-		"htmlburger/carbon-fields": "2.1.0",
-		"tgmpa/tgm-plugin-activation": "2.6.1"
-	},
-	"autoload": {
-		"psr-4": {
-			"Sau\\WP\\Theme\\": "core/class/"
-		}
-	}
+  "name": "sau/wp_template",
+  "description": "Base template for Wordpress",
+  "keywords": [
+    "wp",
+    "template",
+    "sau"
+  ],
+  "homepage": "https://github.com/AkinaySau/wp-template",
+  "license": "MIT",
+  "version": "1.0.2",
+  "authors": [
+    {
+      "name": "Akinay Sau",
+      "email": "akinay.sau@gmail.com",
+      "homepage": "http://a-sau.ru",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=7.0",
+    "sau/library": "dev-master",
+    "filp/whoops": "^2.1.9",
+    "symfony/event-dispatcher": "^v3",
+    "symfony/yaml": "^3",
+    "twig/twig": "^2.4.4",
+    "tgmpa/tgm-plugin-activation": "~2.6.1",
+    "sau/wp_template_carbon": "1.0.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Sau\\WP\\Theme\\": "core",
+      "Sau\\WP\\Theme\\Source\\": "src/"
+    }
+  }
 }
