@@ -1,0 +1,10 @@
+debug: true
+
+#Particles directory (twig namespace "@template")
+particles: "particles"
+
+#View directory (twig namespace "@template")
+views: "views"
+
+#Cache directory
+cache: "cache"
