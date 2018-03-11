@@ -9,6 +9,7 @@
 namespace Sau\WP\Theme;
 
 
+use Sau\WP\Theme\Source\Carbon\BaseFields;
 use Sau\WP\Theme\Traits\Menu;
 
 abstract class InitTemplateClass {
@@ -18,14 +19,40 @@ abstract class InitTemplateClass {
 		TGM::init();
 		$this->define();
 		$this->customCode();
+		$this->baseCarbon();
+		$this->carbon();
 	}
 
 	/**
 	 * For register defines
 	 */
-	public function define() {
-
+	protected function define() {
+		if ( ! defined( 'DS' ) ) {
+			define( 'DS', DIRECTORY_SEPARATOR );
+		}
+		if ( ! defined( 'THEME_LANG' ) ) {
+			define( 'THEME_LANG', 'sau_theme' );
+		}
 	}
 
-	abstract public function customCode();
+	/**
+	 * BaseFields carbon fields
+	 */
+	private function baseCarbon() {
+		if ( class_exists( BaseFields::class ) ) {
+			BaseFields::init( 'theme_options', __( 'Scripts', THEME_LANG ) );
+		}
+	}
+
+	/**
+	 * For register carbon fields
+	 */
+	protected function carbon() {
+	}
+
+	/**
+	 * For print custom code
+	 * @return mixed
+	 */
+	abstract protected function customCode();
 }
