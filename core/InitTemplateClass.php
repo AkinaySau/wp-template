@@ -14,11 +14,18 @@ use Sau\WP\Theme\Traits\Menu;
 abstract class InitTemplateClass {
 	use Menu;
 
-	public function __construct () {
+	public function __construct() {
 		TGM::init();
+		$this->define();
 		$this->customCode();
 	}
 
+	/**
+	 * For register defines
+	 */
+	public function define() {
 
-	abstract public function customCode ();
+	}
+
+	abstract public function customCode();
 }
