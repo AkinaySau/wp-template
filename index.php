@@ -10,4 +10,12 @@ use Sau\WP\Theme\Twig\SauTwig;
 
 $data = [];
 
-SauTwig::display('@template/index.twig', $data);
+try {
+	SauTwig::display( '@template/index.twig', $data );
+} catch ( Twig_Error $e ) {
+	echo $e->getMessage(), PHP_EOL;
+	echo '<pre>';
+	print_r( $e->getTrace() );
+	echo '</pre>';
+	wp_die();
+}

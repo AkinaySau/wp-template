@@ -8,7 +8,7 @@
   ],
   "homepage": "https://github.com/AkinaySau/wp-template",
   "license": "MIT",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "authors": [
     {
       "name": "Akinay Sau",
@@ -19,7 +19,7 @@
   ],
   "require": {
     "php": ">=7.0",
-    "sau/library": "dev-master",
+    "sau/library": "^1.0",
     "filp/whoops": "^2.1.9",
     "symfony/event-dispatcher": "^v3",
     "symfony/yaml": "^3",
