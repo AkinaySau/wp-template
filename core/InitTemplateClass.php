@@ -20,5 +20,5 @@ abstract class InitTemplateClass {
 	}
 
 
-	abstract protected function customCode ();
+	abstract public function customCode ();
 }

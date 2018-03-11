@@ -14,7 +14,7 @@ use Sau\Lib\Theme;
 use Sau\WP\Theme\InitTemplateClass;
 
 class ST extends InitTemplateClass {
-	protected static function customCode () {
+	public function customCode () {
 		Theme::addSupportTitleTag();
 		Theme::loadThemeTextdomain(THEME_LANG, get_stylesheet_directory() . DS . 'l10n');
 
