@@ -8,3 +8,6 @@ views: "views"
 
 #Cache directory
 cache: "cache"
+
+#TODO: create configs for simple register sidebars
+#widgets:

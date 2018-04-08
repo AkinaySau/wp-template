@@ -1,4 +1,7 @@
 {% extends "@template/layouts/page.twig" %}
 {% block content %}
-
+    <p>{{ test_var }}</p>
+    <p>{{ wp_test('WP') }}</p>
+    <p>{{ crb_test('Carbon') }}</p>
+    <p>{{ ru_test('Номер телефона 894546578')|ru_phone }}</p>
 {% endblock %}

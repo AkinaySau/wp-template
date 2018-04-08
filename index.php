@@ -6,8 +6,8 @@
  */
 
 
-use Sau\WP\Theme\Twig\SauTwig;
+use Sau\WP\Theme\Extension\Twig\SauTwig;
 
 $data = [];
 
-SauTwig::display('@template/index.twig', $data);
+SauTwig::display( '@template/index.twig', $data );
