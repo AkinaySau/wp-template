@@ -8,24 +8,23 @@
 
 namespace Sau\WP\Theme\Extension\Twig;
 
-use Sau\WP\Theme\STheme;
-use Twig_Extension;
-use Twig_Filter;
-use Twig_SimpleFunction;
+use Twig\TwigFilter;
+use Twig\TwigFunction;
+use Twig\Extension\AbstractExtension;
 
-final class SauTwigExtension extends Twig_Extension {
+final class SauTwigExtension extends AbstractExtension {
 	/**
-	 * Storage for Twig_Extension
+	 * Storage for AbstractExtension
 	 * @var array
 	 */
 	protected static $other = [];
 	/**
-	 * Storage for Twig_Filter
+	 * Storage for TwigFilter
 	 * @var array
 	 */
 	protected static $filters = [];
 	/**
-	 * Storage for Twig_SimpleFunction
+	 * Storage for TwigFunction
 	 * @var array
 	 */
 	protected static $simple_function = [];
@@ -35,14 +34,14 @@ final class SauTwigExtension extends Twig_Extension {
 	 *
 	 * NOT FOR USES (system construct)
 	 *
-	 * @param Twig_Filter|Twig_SimpleFunction|Twig_Extension|null $ext
+	 * @param TwigFilter|TwigFunction|AbstractExtension|null $ext
 	 */
 	public function __construct( $ext = null ) {
-		if ( $ext instanceof Twig_Filter ) {
+		if ( $ext instanceof TwigFilter ) {
 			static::$filters[] = $ext;
-		} elseif ( $ext instanceof Twig_SimpleFunction ) {
+		} elseif ( $ext instanceof TwigFunction ) {
 			static::$simple_function[] = $ext;
-		} elseif ( $ext instanceof Twig_Extension ) {
+		} elseif ( $ext instanceof AbstractExtension ) {
 			static::$other[] = $ext;
 		}
 	}
@@ -83,7 +82,7 @@ final class SauTwigExtension extends Twig_Extension {
 	 */
 	public static function _f( $name, $callback, $options = [] ) {
 		TwigActions::twigFilters( function () use ( $name, $callback, $options ) {
-			$ext = new Twig_Filter( $name, $callback, $options );
+			$ext = new TwigFilter( $name, $callback, $options );
 			new SauTwigExtension( $ext );
 		} );
 	}
@@ -97,7 +96,7 @@ final class SauTwigExtension extends Twig_Extension {
 	 */
 	public static function _s( $name, $callback, $options = [] ) {
 		TwigActions::twigSimpleFunction( function () use ( $name, $callback, $options ) {
-			$ext = new Twig_SimpleFunction( $name, $callback, $options );
+			$ext = new TwigFunction( $name, $callback, $options );
 			new SauTwigExtension( $ext );
 		} );
 	}
@@ -105,9 +104,9 @@ final class SauTwigExtension extends Twig_Extension {
 	/**
 	 * Add extension class
 	 *
-	 * @param Twig_Extension $twig_extension
+	 * @param AbstractExtension $twig_extension
 	 */
-	public static function _e( Twig_Extension $twig_extension ) {
+	public static function _e( AbstractExtension $twig_extension ) {
 		TwigActions::twigExtension( function () use ( $twig_extension ) {
 			new SauTwigExtension( $twig_extension );
 		} );

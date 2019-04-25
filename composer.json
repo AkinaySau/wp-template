@@ -8,7 +8,7 @@
   ],
   "homepage": "https://github.com/AkinaySau/wp-template",
   "license": "MIT",
-  "version": "2.0.0",
+  "version": "2.0.2",
   "authors": [
     {
       "name": "Akinay Sau",
@@ -25,7 +25,7 @@
     "symfony/yaml": "^3",
     "twig/twig": "^2.4.4",
     "tgmpa/tgm-plugin-activation": "~2.6.1",
-    "htmlburger/carbon-fields": "2.2.*"
+    "htmlburger/carbon-fields": "3.1.*"
   },
   "autoload": {
     "psr-4": {

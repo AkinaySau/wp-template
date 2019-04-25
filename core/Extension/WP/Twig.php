@@ -9,76 +9,97 @@
 namespace Sau\WP\Theme\Extension\WP;
 
 
-use Twig_Extension;
-use Twig_SimpleFunction;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFilter;
+use Twig\TwigFunction;
 
-class Twig extends Twig_Extension {
+class Twig extends AbstractExtension
+{
 
-	public function getName() {
-		return 'SauTwigWpExtension';
-	}
+    public function getName()
+    {
+        return 'SauTwigWpExtension';
+    }
 
-	public function getFunctions() {
-		return [
-			/**
-			 * wp_
-			 */
-			new Twig_SimpleFunction( 'wp_get_post_tags', 'wp_get_post_tags' ),
+    public function getFilters()
+    {
+        return [
+            //base
+            new TwigFilter('wp_do_shortcode', 'do_shortcode'),
+            //custom
+            new TwigFilter('wp_the_content', [$this, 'filterTheContent'], ['is_safe' => ['html']]),
+        ];
+    }
 
-			/**
-			 * Posts
-			 */
-			new Twig_SimpleFunction( 'have_posts', 'have_posts' ),
-			new Twig_SimpleFunction( 'the_post', 'the_post' ),
-			new Twig_SimpleFunction( 'get_posts', 'get_posts' ),
-			new Twig_SimpleFunction( 'the_excerpt', 'the_excerpt' ),
-			new Twig_SimpleFunction( 'the_introtext', 'the_excerpt' ),
-			new Twig_SimpleFunction( 'the_content', 'the_content' ),
-			new Twig_SimpleFunction( 'get_post_thumbnail_url', 'get_the_post_thumbnail_url' ),
-			new Twig_SimpleFunction( 'get_post_permalink', 'get_post_permalink' ),
+    public function filterTheContent($content)
+    {
+        $content = apply_filters('the_content', $content);
+        $content = str_replace(']]>', ']]&gt;', $content);
 
-			/**
-			 * Theme
-			 */
-			new Twig_SimpleFunction( 'theme_uri', 'get_stylesheet_directory_uri' ),
-			new Twig_SimpleFunction( 'do_shortcode', 'do_shortcode' ),
+        return $content;
+    }
 
-			/**
-			 * Users
-			 */
-			new Twig_SimpleFunction( 'is_user_logged_in', 'is_user_logged_in' ),
+    /**
+     * TODO: Check name functions
+     * @return array|TwigFunction[]
+     */
+    public function getFunctions()
+    {
+        return [
+            /**
+             * wp_
+             */ new TwigFunction('wp_get_post_tags', 'wp_get_post_tags'),
+            new TwigFunction('home_url', 'home_url'),
 
-			/**
-			 * Footer
-			 */
-			new Twig_SimpleFunction( 'wp_footer', 'wp_footer' ),
-			new Twig_SimpleFunction( 'get_footer', 'get_footer' ),
+            /**
+             * Posts
+             */ new TwigFunction('have_posts', 'have_posts'),
+            new TwigFunction('the_post', 'the_post'),
+            new TwigFunction('get_posts', 'get_posts'),
+            new TwigFunction('the_excerpt', 'the_excerpt'),
+            new TwigFunction('the_introtext', 'the_excerpt'),
+            new TwigFunction('the_content', 'the_content'),
+            new TwigFunction('get_post_thumbnail_url', 'get_the_post_thumbnail_url'),
+            new TwigFunction('get_post_permalink', 'get_post_permalink'),
 
-			/**
-			 * Header
-			 */
-			new Twig_SimpleFunction( 'wp_head', 'wp_head' ),
-			new Twig_SimpleFunction( 'get_header', 'get_header' ),
+            /**
+             * Theme
+             */ new TwigFunction('theme_uri', 'get_stylesheet_directory_uri'),
+            new TwigFunction('do_shortcode', 'do_shortcode'),
 
-			/**
-			 * Attachment
-			 */
-			new Twig_SimpleFunction( 'wp_attach_img_src', 'wp_get_attachment_image_url' ),
+            /**
+             * Users
+             */ new TwigFunction('is_user_logged_in', 'is_user_logged_in'),
 
-			/**
-			 * Trash
-			 */
+            /**
+             * Footer
+             */ new TwigFunction('wp_footer', 'wp_footer'),
+            new TwigFunction('get_footer', 'get_footer'),
 
-			new Twig_SimpleFunction( 'ln_attributes', 'language_attributes' ),
+            /**
+             * Header
+             */ new TwigFunction('wp_head', 'wp_head'),
+            new TwigFunction('get_header', 'get_header'),
 
-			/**
-			 * Nonce
-			 */
-			new Twig_SimpleFunction( 'wp_nonce_field', 'wp_nonce_field' ),
+            /**
+             * Attachment
+             */ new TwigFunction('wp_attach_img_src', 'wp_get_attachment_image_url'),
 
-			new Twig_SimpleFunction( 'wp_test', function ( $i ) {
-				echo (string) $i;
-			} ),
-		];
-	}
+            /**
+             * Trash
+             */
+
+            new TwigFunction('ln_attributes', 'language_attributes'),
+
+            /**
+             * Nonce
+             */ new TwigFunction('wp_nonce_field', 'wp_nonce_field'),
+
+            new TwigFunction(
+                'wp_test', function ($i) {
+                echo (string)$i;
+            }
+            ),
+        ];
+    }
 }

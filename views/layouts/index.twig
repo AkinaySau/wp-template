@@ -1,0 +1,12 @@
+{% extends "@template/base.html.twig" %}
+{% block content %}
+	{# !!! ATTENTION !!! #}
+	{#for gutenberg right work need apply filter 'the_content' (burn in hell gutenberg)#}
+	{{ post.post_content|wp_the_content }}
+	{# !!! ENDT ATTENTION !!! #}
+	<hr>
+	<p>{{ test_var }}</p>
+	<p>{{ wp_test('WP') }}</p>
+	<p>{{ crb_test('Carbon') }}</p>
+	<p>{{ ru_test('Номер телефона 894546578')|ru_phone }}</p>
+{% endblock %}
