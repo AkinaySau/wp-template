@@ -15,4 +15,4 @@ while (have_posts()):the_post();
 endwhile;
 
 
-SauTwig::display('@template/index.twig', $data);
+SauTwig::display('@template/layouts/index.twig', $data);
