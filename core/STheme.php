@@ -94,7 +94,9 @@ final class STheme {
 		if ( ! defined( 'DS' ) ) {
 			define( 'DS', DIRECTORY_SEPARATOR );
 		}
-		define( 'THEME_LANG', 'sau_theme' );
+        if ( ! defined( 'THEME_LANG' ) ) {
+            define( 'THEME_LANG', 'sau_theme' );
+        }
 	}
 
 	protected function coreExtension() {
