@@ -40,7 +40,7 @@ class ST extends InitTemplateClass
     private function twig()
     {
         //SauTwigExtension::_e($twig_extension);
-        SauTwigExtension::_s($name, $callback);
+        //SauTwigExtension::_s($name, $callback);
         //SauTwigExtension::_f($name, $callback)
     }
 }
