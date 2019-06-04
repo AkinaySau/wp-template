@@ -30,6 +30,16 @@ class ST extends InitTemplateClass
 
         //add twig extension
         $this->twig();
+
+        add_filter(
+            'allowed_block_types',
+            function ($allowed_blocks) {
+                return array(
+                    'carbon-fields/banner',
+                );
+            }
+        );
+
     }
 
     protected function carbon()
